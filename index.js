@@ -41,9 +41,24 @@ var users = [
     {
         id: 'user_Lm0fDWotK8ulu7Cpym8GoZUF5Jnt2R8oRHGUUphpMyj', 
         name: 'Jonathan Woodruff', 
-        fname: 'jonathan'
+        fname: 'jon'
     }
 ];
+
+var images = {
+    matt: {
+        over: 'http://res.cloudinary.com/ddkp1ojwe/image/upload/v1513281561/sales/obojkzkycjrvktfrftzg.png',
+        under: 'http://res.cloudinary.com/ddkp1ojwe/image/upload/a_180/v1513281561/sales/obojkzkycjrvktfrftzg.png'
+    },
+    mark: {
+        over: 'http://res.cloudinary.com/ddkp1ojwe/image/upload/v1513281711/sales/cjrw9mjjdzvlzyynordx.jpg',
+        under: 'http://res.cloudinary.com/ddkp1ojwe/image/upload/a_180/v1513281711/sales/cjrw9mjjdzvlzyynordx.jpg'
+    },
+    jon: {
+        over: 'http://res.cloudinary.com/ddkp1ojwe/image/upload/v1513280526/sales/jon.png',
+        under: 'http://res.cloudinary.com/ddkp1ojwe/image/upload/a_180/v1513280526/sales/jon.png'
+    }
+}
 
 var metrics = {
     sales: {
@@ -60,6 +75,18 @@ var metrics = {
 
 app.get('/test', (req, res) => {
     res.send(metrics);
+});
+
+app.get('/image', (req, res) => {
+    if (Object.keys(req.query).length > 0) {
+        var fname = Object.keys(req.query)[0];
+
+        if (metrics.sales.performed[fname].actual > metrics.sales.performed.expected) {
+            res.send(images[fname].over);
+        } else if (metrics.sales.performed[fname].actual < metrics.sales.performed.expected) {
+            res.send(images[fname].under);
+        }
+    }
 });
 
 function getData() {
