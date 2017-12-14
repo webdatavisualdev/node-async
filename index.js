@@ -82,9 +82,11 @@ app.get('/image', (req, res) => {
         var fname = Object.keys(req.query)[0];
 
         if (metrics.sales.performed[fname].actual > metrics.sales.performed.expected) {
-            res.send(images[fname].over);
+            res.writeHead(301, {Location: images[fname].over});
+            res.end();
         } else if (metrics.sales.performed[fname].actual < metrics.sales.performed.expected) {
-            res.send(images[fname].under);
+            res.writeHead(301, {Location: images[fname].under});
+            res.end();
         }
     }
 });
