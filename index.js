@@ -24,7 +24,7 @@ app.use(serveStatic(__dirname, {'index': ['public/index.html']}));
 var businessDaysThisMonth = moment('12-01-2017','MM-DD-YYYY').monthBusinessDays().length;
 var remainingDaysThisMonth = moment().businessDiff(moment('12-31-2017','MM-DD-YYYY'));
 var elapsedDaysThisMonth = moment().businessDiff(moment('12-01-2017','MM-DD-YYYY'));
-var percentBooked = remainingDaysThisMonth / businessDaysThisMonth;
+var percentBooked = elapsedDaysThisMonth / businessDaysThisMonth;
 var percentPerformed = elapsedDaysThisMonth / businessDaysThisMonth;
 
 var users = [
