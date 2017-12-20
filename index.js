@@ -63,12 +63,12 @@ var images = {
 var metrics = {
     sales: {
         booked: {
-            target: 22,
-            expected: Math.round(22 * percentBooked * 100) / 100
+            target: process.env.BOOKED_TARGET,
+            expected: Math.round(process.env.BOOKED_TARGET * percentBooked * 100) / 100
         },
         performed: {
-            target: 16.5,
-            expected: Math.round(16.5 * percentPerformed * 100) / 100
+            target: process.env.PERFORMED_TARGET,
+            expected: Math.round(process.env.PERFORMED_TARGET * percentPerformed * 100) / 100
         }
     }
 };
