@@ -21,9 +21,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(serveStatic(__dirname, {'index': ['public/index.html']}));
 
-var businessDaysThisMonth = moment('12-01-2017','MM-DD-YYYY').monthBusinessDays().length;
-var remainingDaysThisMonth = moment().businessDiff(moment('12-31-2017','MM-DD-YYYY'));
-var elapsedDaysThisMonth = moment().businessDiff(moment('12-01-2017','MM-DD-YYYY'));
+var month = new Date().getMonth() + 1;
+var year = new Date().getFullYear();
+var firstDay = 1;
+var lastDay = new Date(year, month, 0).getDate();
+
+var businessDaysThisMonth = moment(('0' + month).slice(-2) + '-' + ('0' + firstDay).slice(-2) + '-' + year,'MM-DD-YYYY').monthBusinessDays().length;
+var remainingDaysThisMonth = moment().businessDiff(moment(('0' + month).slice(-2) + '-' + ('0' + lastDay).slice(-2) + '-' + year,'MM-DD-YYYY'));
+var elapsedDaysThisMonth = moment().businessDiff(moment(('0' + month).slice(-2) + '-' + ('0' + firstDay).slice(-2) + '-' + year,'MM-DD-YYYY'));
 var percentBooked = elapsedDaysThisMonth / businessDaysThisMonth;
 var percentPerformed = elapsedDaysThisMonth / businessDaysThisMonth;
 
