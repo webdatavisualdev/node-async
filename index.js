@@ -103,8 +103,8 @@ function getData() {
         // Get Opportunities
         var url = API + 'report/activity/orga_VmrjYdiRSHUDQ1NnTxCnt1w8Cqa9olIQsExlq3vziO7';
         var query = {
-            date_start: '12/1/2017', 
-            date_end: '12/31/2017', 
+            date_start: month + '/' + firstDay + '/' + year, 
+            date_end: month + '/' + lastDay + '/' + year, 
             user_id: user.id
         };
         var promise = new Promise(function (resolve, reject) {
@@ -125,8 +125,8 @@ function getData() {
         url = API + 'report/statuses/lead/orga_VmrjYdiRSHUDQ1NnTxCnt1w8Cqa9olIQsExlq3vziO7';
         query = {
             query: 'opportunity_user:"' + user.name + '"', 
-            date_end: '2018-01-01T04:59:59.999Z', 
-            date_start: '2017-12-01T05:00:00.000Z'
+            date_end: month + '/' + lastDay + '/' + year, 
+            date_start: month + '/' + firstDay + '/' + year
         };
         promise = new Promise(function (resolve, reject) {
             var params = {
