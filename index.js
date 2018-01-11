@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const express = require('express');
 const path = require('path');
 const http = require('http');
@@ -47,6 +49,11 @@ var users = [
         id: 'user_Lm0fDWotK8ulu7Cpym8GoZUF5Jnt2R8oRHGUUphpMyj', 
         name: 'Jonathan Woodruff', 
         fname: 'jon'
+    },
+    {
+        id: 'user_Lm0fDWotK8ulu7Cpym8GoZUF5Jnt2R8oRHGUUphpMyj', 
+        name: 'Michelle Dumars', 
+        fname: 'michelle'
     }
 ];
 
@@ -62,6 +69,10 @@ var images = {
     jon: {
         over: 'http://res.cloudinary.com/ddkp1ojwe/image/upload/v1513280526/sales/jon.png',
         under: 'http://res.cloudinary.com/ddkp1ojwe/image/upload/a_180/v1513280526/sales/jon.png'
+    },
+    michelle: {
+        over: 'http://res.cloudinary.com/ddkp1ojwe/image/upload/v1515697284/sales/michelle.png',
+        under: 'http://res.cloudinary.com/ddkp1ojwe/image/upload/a_180/v1515697284/sales/michelle.png'
     }
 }
 
