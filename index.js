@@ -152,7 +152,9 @@ function getData() {
             } else {
                 var filtered = _.filter(data.body.status_overview, {'status_label': 'Presented'});
                 if (filtered.length > 0) {
-                    metrics.sales.performed[data.user.fname] = {actual: filtered[0].gained};
+                    metrics.sales.performed[data.user.fname] = {
+                        actual: parseInt(filtered[0].gained) + parseInt(process.env['OFFSET_' + data.user.fname.toUpperCase() + '_PERFORMED'])
+                    };
                 }
             }
         });
